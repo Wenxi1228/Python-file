@@ -12,8 +12,8 @@ def hextochar(response):
     alist_temp = []
     length = len(response)
     length_temp = length//2
-    i=0
-    while i<length_temp:
+    i = 0
+    while i < length_temp:
         alist_temp.append(response[2*i]+response[2*i+1])
         print(chr(int(alist_temp[i], base=16)), end='')
         i += 1
