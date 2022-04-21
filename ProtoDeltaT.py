@@ -17,18 +17,18 @@ def deltatcheck(Port,file):
         if deltat>0.011 or deltat<0.009:   #1ms tolerance 10%
           if count>1:
             print('Port=',Port,'cycle time is wrong')
-            print(Port, count, deltat)
+            print(Port, count, time2, deltat)
             #break;
-        time1=time2
+        time1 = time2
       else:
         pass
     else:
       pass
-  print('Port=',Port,'共有包:',count,'cycle time is correct')
+  print('Port=',Port,'共有包:',count)
 
 
 if __name__ =="__main__":
-  file="./Proto.pcapng"
+  file="./Proto_0118.pcapng"
   Port1=15001
   Port2=15002
   list1=[]
