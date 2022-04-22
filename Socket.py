@@ -16,5 +16,10 @@ def socket_tcp(ip_addr,send_port):
 
 
 if __name__=='__main__':
+    #while 1:
+        #threading.Thread(target=socket_tcp('172.31.3.67', 30517)).start()
+        #threading.Thread(target=socket_tcp('172.31.3.67', 41509)).start()
+
     while 1:
-        socket_tcp('172.31.3.67',30517)
+        socket_tcp('172.31.3.67', 30517)
+        socket_tcp('172.31.3.67', 41509)
