@@ -41,7 +41,7 @@ if __name__=='__main__':
         time.sleep(53.7)
         check_times += 1
     #print(result)
-    f = open("D:\\testresult2.txt", mode = "w")
+    f = open("D:\\testresult3.txt", mode = "w")
     for i in result:
         f.write(i)
         f.write('\r\n')
