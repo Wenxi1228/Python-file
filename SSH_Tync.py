@@ -28,7 +28,7 @@ def read_timestamp(host_name, device):
 if __name__=='__main__':
     check_times = 1
     result = []
-    while check_times <= 150:
+    while check_times <= 500:
         print("The", check_times, "timesync test")
         times="The " + str(check_times) + " timesync test"
         result.append(times)
@@ -38,10 +38,10 @@ if __name__=='__main__':
         result.append(J3B_result)
         J3C_result = read_timestamp("192.168.2.28", "J3C")
         result.append(J3C_result)
-        time.sleep(53.7)
+        time.sleep(68.6)
         check_times += 1
     #print(result)
-    f = open("D:\\testresult3.txt", mode = "w")
+    f = open("D:\J3testlog\Testresult.txt", mode = "w")
     for i in result:
         f.write(i)
         f.write('\r\n')
