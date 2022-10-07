@@ -215,15 +215,14 @@ def app_version_check(host_name,device,version):
 
 if __name__=='__main__':
     i = 1
-    J3_version ="2010"   #设定开始升级前，当前软件版本
+    J3_version ="1088x"   #设定开始升级前，当前软件版本
     f = open("D:\ota\ota.txt", mode="w")
     while i <= 500:        #设定OTA测试次数
-        if J3_version =="2010":
-            create_file("192.168.2.10")
-            create_file("192.168.2.11")
-            create_file("192.168.2.28")
-            transfer_data("D:\ota\V1082\\agent_module", "/map/agent_module")  # V2009 agent_module
-            transfer_data("D:\ota\V1082\pilot3_ota.51","/map/pilot3_ota.51")
+        if J3_version =="1088":
+            #create_file("192.168.2.10")
+            #create_file("192.168.2.11")
+            #create_file("192.168.2.28")
+            transfer_data("D:\ota\V1088x\pilot3_ota.51","/map/pilot3_ota.51")
             #ota_exe("192.168.2.10", 'J3A')
             #ota_exe("192.168.2.11", 'J3B')
             ota_exe("192.168.2.28", 'J3C')
@@ -232,21 +231,20 @@ if __name__=='__main__':
             # otaservice("J3C", "192.168.2.28")
             ota_cmd()
             #version = "Board type:j3pilotm1 Date:Fri Jun 10 00:03:10 CST 2022; Version_Number:QV_1.0.7.0"  #输入版本号
-            version = "Board type:j3pilotm1 Date:Sat Jul 16 17:49:26 CST 2022; Version_Number:QV_1.0.8.2"
+            version = "Board type:j3pilotm1 Date:Tue Jul 12 23:53:37 CST 2022; Version_Number:QV_1.0.8.1"
             result1 = version_check("192.168.2.10", 'J3A',version)
             result2 = version_check("192.168.2.11", 'J3B',version)
             result3 = version_check("192.168.2.28", 'J3C',version)
-            result4 = app_version_check("192.168.2.10", 'J3A', "V4.7.3-20220726-1236")
-            result5 = app_version_check("192.168.2.11", 'J3B', "V4.7.3-20220726-1237")
-            result6 = app_version_check("192.168.2.28", 'J3C', '{"version": "v2.0.0.4_r4.1.7_r3.5.9_20220809_2043", "platform": "J3"}')
+            result4 = app_version_check("192.168.2.10", 'J3A', "V4.7.1-20220713-1342")
+            result5 = app_version_check("192.168.2.11", 'J3B', "V4.7.1-20220713-1343")
+            result6 = app_version_check("192.168.2.28", 'J3C', '{"version": "v1.0.8.1_r4.1.1_r3.5.7_20220715_1237", "platform": "J3"}')
             result_str = "This is "+ str(i) + " times OTA test ! ota from " +J3_version+" to target version success"
-            J3_version = "1082"
-        elif J3_version == "1082":
-            create_file("192.168.2.10")
-            create_file("192.168.2.11")
-            create_file("192.168.2.28")
-            transfer_data("D:\ota\V2010\\agent_module", "/map/agent_module")  # V1082 agent_module
-            transfer_data("D:\ota\V2010\pilot3_ota.51","/map/pilot3_ota.51")
+            J3_version = "1088x"
+        elif J3_version == "1088x":
+            #create_file("192.168.2.10")
+            #create_file("192.168.2.11")
+            #create_file("192.168.2.28")
+            transfer_data("D:\ota\V1088\pilot3_ota.51","/map/pilot3_ota.51")
             # ota_exe("192.168.2.10", 'J3A')
             # ota_exe("192.168.2.11", 'J3B')
             ota_exe("192.168.2.28", 'J3C')
@@ -255,15 +253,15 @@ if __name__=='__main__':
             # otaservice("J3C", "192.168.2.28")
             ota_cmd()
             #version = "Board type:j3pilotm1 Date:Mon May 30 17:05:31 CST 2022; Version_Number:QV_1.0.6.7" #输入版本号
-            version = "Board type:j3pilotm1 Date:Fri Sep 16 14:29:41 CST 2022; Version_Number:QV_2.0.1.0"
+            version = "Board type:j3pilotm1 Date:Tue Jul 12 20:36:03 CST 2022; Version_Number:QV_1.0.7.A"
             result1 = version_check("192.168.2.10", 'J3A', version)
             result2 = version_check("192.168.2.11", 'J3B', version)
             result3 = version_check("192.168.2.28", 'J3C', version)
-            result4 = app_version_check("192.168.2.10", 'J3A', "V5.8.1-20220921-1230")
-            result5 = app_version_check("192.168.2.11", 'J3B', "V5.8.1-20220921-1231")
-            result6 = app_version_check("192.168.2.28", 'J3C', '{"version": "v2.0.1.0_r4.2.6_r3.5.10_20220917_1914_dbd3gt", "platform": "J3"}')
+            result4 = app_version_check("192.168.2.10", 'J3A', "V4.7.1-20220713-1342")
+            result5 = app_version_check("192.168.2.11", 'J3B', "V4.7.1-20220713-1343")
+            result6 = app_version_check("192.168.2.28", 'J3C', '{"version": "v1.0.8.1_r4.1.1_r3.5.7_20220715_1237", "platform": "J3"}')
             result_str = "This is " + str(i) + " times OTA test ! ota from " + J3_version + " to target version success"
-            J3_version = "2010"
+            J3_version = "1088"
 
         # if J3_version =="1064":
         #     transfer_data("D:\ota\V1070\pilot3_ota.zip","/map/pilot3_ota.zip")

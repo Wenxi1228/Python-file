@@ -12,12 +12,18 @@ def socket_tcp(ip_addr,send_port):
     msg= b'\x10\x10\x00\x01\x00\x00\x00\x4c\x02\x12\x00\x01\x01\x01\x00\x00\x00\x00\x00\x40\x00\x08\x02\x80\x5e\x1f\x01\x02\xac\x1f\x03\x02\x00\x50\x00\x00\x00\x00\x14\x1b\x55\x78\x01\x00\x00\x00\x00\x00\x23\x01\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'
     # 连接远程主机
     s.connect((ip_addr, send_port))
-    #s.sendto(msg, server_address)
-    #print('--%s--' % s.recv(1024).decode('utf-8'))
+    i=1
     print(datetime.datetime.now())
+    while i<1000:
+        s.sendto(msg, server_address)
+        time.sleep(5)
+        print(i)
+        i += 1
+    #print('--%s--' % s.recv(1024).decode('utf-8'))
+
     time.sleep(5)
     #s.close()
-    time.sleep(200)
+    time.sleep(600)
 
 def http_socket():
     # 实例化socket对象  声明：IP4协议          TCP协议

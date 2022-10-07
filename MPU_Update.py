@@ -37,9 +37,10 @@ def ota_cmd():
     #print(chan.recv(99999).decode())
     print("6")
     chan.send("./agent_module1 ./config/ 4 > /map/agent.log 2>&1 & \n")
+    #chan.send("./agent_module1 ./config/ 4 & \n")
     i=0
     #f = open("D:\\ota\ota.txt", mode="w")
-    while i < 80:   #开始升级后等待240s
+    while i < 90:   #开始升级后等待240s
         #print(chan.recv(99999).decode())
         #f.write(chan.recv(99999).decode())
         time.sleep(3)
@@ -165,37 +166,44 @@ def rm_file():
         ssh.connect(hostname='192.168.2.28', port=22, username="root", password="")
     ssh.get_transport().auth_none("root")
     # input update cmd
-    stdin, stdout, stderr = ssh.exec_command("cd /map")
+    stdin, stdout, stderr = ssh.exec_command("rm -rf /map/did")
     tmp = stdout.read().decode().strip('\n')
     version_result.append(tmp)
-    stdin, stdout, stderr = ssh.exec_command("rm -rf agent_module")
+    #stdin, stdout, stderr = ssh.exec_command("rm -rf /map/agent_module")
+    #stdout.read().decode().strip('\n')
+    #version_result.append(tmp)
+    stdin, stdout, stderr = ssh.exec_command("rm -rf /map/pilot3_ota.51")
     tmp = stdout.read().decode().strip('\n')
     version_result.append(tmp)
+    ssh.close()
 
 
 
 if __name__=='__main__':
-    transfer_data("D:\ota\V1067\\agent_module", "/map/agent_module")
-    transfer_data("D:\ota\V1067\pilot3_ota_1138713201_V1067", "/map/pilot3_ota.zip")
+    #transfer_data("D:\ota\V1067\\agent_module", "/map/agent_module")
+    transfer_data("D:\ota\V1067_2\pilot3_ota.51", "/map/pilot3_ota.51")
 
     ota_exe("192.168.2.10", 'J3A')
     ota_exe("192.168.2.11", 'J3B')
     ota_exe("192.168.2.28", 'J3C')
     ota_cmd()
-            #version = "Board type:j3pilotm1 Date:Fri Jun 10 00:03:10 CST 2022; Version_Number:QV_1.0.7.0"  #输入版本号
-    version = "Board type:j3pilotm1 Date:Sun Jun 12 17:58:43 CST 2022; Version_Number:QV_1.0.7.0"
+    #version = "Board type:j3pilotm1 Date:Fri Jun 10 00:03:10 CST 2022; Version_Number:QV_1.0.7.0"  #输入版本号
+    #version = "Board type:j3pilotm1 Date:Sat Jul 16 17:49:26 CST 2022; Version_Number:QV_1.0.8.2"
+    version = "Board type:j3pilotm1 Date:Mon May 30 17:05:31 CST 2022; Version_Number:QV_1.0.6.7"
     result1 = version_check("192.168.2.10", 'J3A',version)
     result2 = version_check("192.168.2.11", 'J3B',version)
     result3 = version_check("192.168.2.28", 'J3C',version)
-    result4 = app_version_check("192.168.2.10", 'J3A', "V4.5.0-20220611-1250")
-    result5 = app_version_check("192.168.2.11", 'J3B', "V4.5.0-20220611-1251")
-    result6 = app_version_check("192.168.2.28", 'J3C', '{"version": "v1.0.6.7_20220603_2020", "platform": "J3"}')
+    #result4 = app_version_check("192.168.2.10", 'J3A', "V4.6.5-20220705-1412")
+    #result5 = app_version_check("192.168.2.11", 'J3B', "V4.6.5-20220705-1413")
+    #result6 = app_version_check("192.168.2.28", 'J3C', '{"version": "v1.0.7.8_r4.0.7_r3.5.6_20220705_2340", "platform": "J3"}')
     # result_str = "This is "+ str(i) + " times OTA test ! ota from " +J3_version+" to target version success"
 
     print("This is J3 update result")
-    if (result1 == False) or (result2 == False) or (result3 == False) or (result4 == False) or (result5 == False) or (result6 == False):  #若升级失败，则退出OTA，保留现场
+    if (result1 == False) or (result2 == False) or (result3 == False):
+    #or (result4 == False) or (result5 == False) or (result6 == False):  #若升级失败，则退出OTA，保留现场
         print("J3 update failed")
     else:
         print("J3 update Success")
     rm_file()
     time.sleep(3)
+    print("J3 update Finished")
