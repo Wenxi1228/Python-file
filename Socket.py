@@ -24,7 +24,7 @@ def socket_udp(ip_addr, send_port):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     start = time.time()  # 获取当前时间
     print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(start)))  # 以指定格式显示当前时间
-    msg= b'\xb0\x08\x00\x01\x00\x00\x00\x4c\x02\x12\x00\x01\x01\x01\x00\x00\x00'
+    msg= b'\x02\xFD\x00\x03\x00\x00\x00\x11\x57\x44\x44\x44\x31\x41\x47\x44\x45\x4d\x30\x5a\x30\x30\x30\x1f\x00'
     server_address = (ip_addr, send_port)  # 接收方 服务器的ip地址和端口号
     client_socket.sendto(msg, server_address)  # 将msg内容发送给指定接收方
     now = time.time()  # 获取当前时间
@@ -39,7 +39,9 @@ if __name__=='__main__':
     #t2=Thread(target=socket_udp('172.31.3.67', 41509))
     #t1.start()
     #t2.start()
+    socket_udp('192.168.2.28', 13400)
+    socket_tcp('192.168.2.28', 13400)
 
-    while 1:
-        socket_tcp('172.31.3.67', 30517)
-        socket_udp('172.31.3.67', 41509)
+    #while 1:
+        #socket_tcp('172.31.3.67', 30517)
+        #socket_udp('172.31.3.67', 41509)
