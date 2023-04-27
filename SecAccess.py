@@ -1,4 +1,4 @@
-APP_MASK=0x23AEBEFD
+APP_MASK=0x23001537
 
 
 def calculate_key(seed):
@@ -16,6 +16,6 @@ def calculate_key(seed):
 
 if __name__ == '__main__':
     #endseed = 0xF5FEA0F6
-    sendseed = 0xE043E8E7
+    sendseed = 0xB0184F00
     sendkey = calculate_key(sendseed)
     print(hex(sendkey))
