@@ -1,9 +1,4 @@
-from numpy import float32, uint8, uint16, uint32
-
-a=-10.001
-b= uint8(a)
-c= uint16(a*2.0+34)
-d= uint32(c)
-print(a,type(a),b,type(b),c,type(c),d,type(d))
-
-#
+recv_data = [2, 253, 128, 1, 0, 0, 0, 7, 16, 194, 14, 128, 127, 34, 120, 2, 253, 128, 1, 0, 0, 0, 8, 16, 194, 14, 128, 98, 1, 7, 2]
+recv_data = [2, 253, 128, 1, 0, 0, 0, 8, 16, 194, 14, 128, 98, 1, 7, 2]
+recv_tmp = recv_data[12:]
+print(recv_tmp)

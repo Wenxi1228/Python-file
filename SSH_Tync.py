@@ -267,7 +267,7 @@ if __name__=='__main__':
     cnt = 0
     app.loadCfg(r"C:\Users\付君强\Desktop\Work\08_Project\16_J3一体机\12_CANoe\123005_EP32_CANoeEnv_230217\123005_EP32_FLC_Simulate_Env_CANoe14.0_230217.cfg")
 
-    while cnt < 2000:
+    while cnt < 5000:
         if app.getSysVar("PythonIf", "WakeupEvent") == 1 and record_times == 0:
             print(app.getSysVar("PythonIf", "WakeupEvent"))
             print("The", check_times, "timesync test")
